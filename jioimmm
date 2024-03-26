@@ -1,0 +1,36 @@
+        gana x
+#-----------------------------------------------
+#Ejemplo 2 de entrada
+#        x o o _ x o _ o _
+#Ejemplo de salida
+#        gana o
+#----------------------------------------------- 
+#Ejemplo 3 de entrada
+#        x o o o x x o x o
+#Ejemplo de salida
+#        empate
+#-----------------------------------------------
+#Ejemplo 4 de entrada
+#        x _ o o x _ _ x o
+#Ejemplo de salida
+#        juegue
+#-----------------------------------------------  
+def resultado_gato(juego):
+    for i in range(0, 9, 3):
+        if juego[i] == juego[i + 1] == juego[i + 2] and juego[i] != '_':
+            return f"gana {juego[i]}"
+
+    for i in range(3):
+        if juego[i] == juego[i + 3] == juego[i + 6] and juego[i] != '_':
+            return f"gana {juego[i]}"
+
+    if juego[0] == juego[4] == juego[8] and juego[0] != '_':
+        return f"gana {juego[0]}"
+    if juego[2] == juego[4] == juego[6] and juego[2] != '_':
+        return f"gana {juego[2]}"
+    if '_' not in juego:
+        return "empate"
+    return "juegue"
+entrada = input().split()
+resultado = resultado_gato(entrada)
+print(resultado)
